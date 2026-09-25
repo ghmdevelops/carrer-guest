@@ -59,7 +59,7 @@ export function ExperienceCard({ entry, order, total, onClose }: Props) {
               style={{ background: `linear-gradient(90deg, ${entry.accent}, transparent)` }}
             />
 
-            <div className="max-h-[78dvh] overflow-y-auto p-5 md:p-7">
+            <div className="scroll-overlay max-h-[78dvh] overflow-y-auto p-5 md:p-7">
               <header className="flex items-start gap-4">
                 <div
                   className="grid size-14 shrink-0 place-items-center rounded-lg border-[3px] border-void"

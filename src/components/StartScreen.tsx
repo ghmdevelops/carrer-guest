@@ -2,10 +2,12 @@ import { useEffect } from 'react'
 import { motion } from 'motion/react'
 import { profile, timeline } from '../data/career'
 import { useI18n } from '../i18n/locale'
+import { useCoarsePointer } from '../game/useInput'
 import { LanguageToggle } from './LanguageToggle'
 
 export function StartScreen({ onStart }: { onStart: () => void }) {
   const { t, L } = useI18n()
+  const touch = useCoarsePointer()
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
@@ -19,7 +21,7 @@ export function StartScreen({ onStart }: { onStart: () => void }) {
 
   return (
     <motion.div
-      className="absolute inset-0 z-50 overflow-y-auto bg-void/72 backdrop-blur-sm"
+      className="scroll-overlay absolute inset-0 z-50 overflow-y-auto bg-void/72 backdrop-blur-sm"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, scale: 1.04 }}
@@ -76,20 +78,33 @@ export function StartScreen({ onStart }: { onStart: () => void }) {
           <div className="mt-4 grid grid-cols-2 gap-3 rounded-xl border border-grape/20 bg-void/40 p-4 text-left sm:grid-cols-4">
             <div>
               <p className="font-pixel text-[8px] uppercase text-grape/70">{t('move')}</p>
-              <p className="mt-2 flex gap-1">
-                <span className="key-cap">A</span>
-                <span className="key-cap">D</span>
-              </p>
+              {touch ? (
+                <p className="mt-2 flex gap-1">
+                  <span className="key-cap">{'<'}</span>
+                  <span className="key-cap">{'>'}</span>
+                </p>
+              ) : (
+                <p className="mt-2 flex gap-1">
+                  <span className="key-cap">A</span>
+                  <span className="key-cap">D</span>
+                </p>
+              )}
             </div>
             <div>
               <p className="font-pixel text-[8px] uppercase text-grape/70">{t('jump')}</p>
-              <p className="mt-2">
-                <span className="key-cap">SPACE</span>
-              </p>
+              {touch ? (
+                <p className="mt-2 text-xs leading-relaxed text-white/60">{t('touchJump')}</p>
+              ) : (
+                <p className="mt-2">
+                  <span className="key-cap">SPACE</span>
+                </p>
+              )}
             </div>
             <div>
               <p className="font-pixel text-[8px] uppercase text-grape/70">{t('spin')}</p>
-              <p className="mt-2 text-xs leading-relaxed text-white/60">{t('spinHint')}</p>
+              <p className="mt-2 text-xs leading-relaxed text-white/60">
+                {touch ? t('touchSpin') : t('spinHint')}
+              </p>
             </div>
             <div>
               <p className="font-pixel text-[8px] uppercase text-grape/70">{t('goal')}</p>

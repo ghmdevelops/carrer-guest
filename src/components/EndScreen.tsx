@@ -16,7 +16,7 @@ export function EndScreen({ discovered, coins, totalCoins, bugs, onRestart }: Pr
 
   return (
     <motion.div
-      className="absolute inset-0 z-50 grid place-items-center overflow-y-auto bg-void/80 p-5 backdrop-blur-sm"
+      className="scroll-overlay absolute inset-0 z-50 grid place-items-center overflow-y-auto bg-void/80 p-5 backdrop-blur-sm"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

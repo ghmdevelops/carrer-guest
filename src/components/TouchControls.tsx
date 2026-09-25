@@ -23,7 +23,7 @@ export function TouchControls({ input }: { input: RefObject<InputState> }) {
   })
 
   return (
-    <div className="pointer-events-none absolute inset-x-0 bottom-0 z-30 flex items-end justify-between p-4 md:hidden">
+    <div className="touch-controls pointer-events-none absolute inset-x-0 bottom-0 z-30 items-end justify-between p-4">
       <div className="pointer-events-auto flex gap-3">
         <button type="button" aria-label={`${t('move')} <`} className="dpad-btn size-16 rounded-xl text-2xl" {...hold('left')}>
           {'<'}

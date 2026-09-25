@@ -56,7 +56,9 @@
     height: 100dvh;
     width: 100%;
     overflow: hidden;
-    touch-action: none;
+    /* `none` aqui bloquearia a rolagem por toque das telas sobrepostas, que
+       sao filhas da stage. `manipulation` mata so o zoom de duplo-toque. */
+    touch-action: manipulation;
     background:
       radial-gradient(120% 90% at 12% 0%, #2a1063 0%, transparent 55%),
       radial-gradient(100% 80% at 88% 4%, #0b3b5e 0%, transparent 50%),
@@ -330,6 +332,24 @@
     border-color: rgba(34, 211, 238, 0.8);
     color: #a5f3fc;
     background: rgba(34, 211, 238, 0.12);
+  }
+
+  /* Telas sobrepostas precisam rolar no celular. */
+  .scroll-overlay {
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Mostra os controles em qualquer dispositivo de toque, nao so em telas
+     estreitas: um tablet tem mais de 768px e mesmo assim nao tem teclado. */
+  .touch-controls {
+    display: none;
+  }
+
+  @media (pointer: coarse), (max-width: 767px) {
+    .touch-controls {
+      display: flex;
+    }
   }
 
   .dpad-btn {

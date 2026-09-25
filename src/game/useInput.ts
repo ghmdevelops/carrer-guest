@@ -1,4 +1,21 @@
-import { useEffect, useRef, type RefObject } from 'react'
+import { useEffect, useRef, useState, type RefObject } from 'react'
+
+const COARSE_QUERY = '(pointer: coarse), (max-width: 767px)'
+
+/** Espelha o mesmo criterio do CSS `.touch-controls`. */
+export function useCoarsePointer(): boolean {
+  const [coarse, setCoarse] = useState(false)
+
+  useEffect(() => {
+    const query = window.matchMedia(COARSE_QUERY)
+    const update = () => setCoarse(query.matches)
+    update()
+    query.addEventListener('change', update)
+    return () => query.removeEventListener('change', update)
+  }, [])
+
+  return coarse
+}
 
 export interface InputState {
   left: boolean

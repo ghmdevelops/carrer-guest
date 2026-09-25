@@ -45,13 +45,13 @@ export function Hud({ total, discovered, coins, bugs, effects, muted, onToggleMu
     .join('')
 
   return (
-    <div className="pointer-events-none absolute inset-x-0 top-0 z-20 flex items-start justify-between gap-3 p-3 md:p-5">
+    <div className="pointer-events-none absolute inset-x-0 top-0 z-20 flex items-start justify-between gap-2 p-2 sm:gap-3 sm:p-3 md:p-5">
       <div className="flex flex-col items-start gap-2">
         <div className="pointer-events-auto glass flex items-center gap-3 rounded-xl px-3 py-2.5">
           <div className="grid size-9 place-items-center rounded-md border-2 border-void bg-gradient-to-br from-neon to-grape">
             <span className="font-pixel text-[9px] text-void">{initials}</span>
           </div>
-          <div className="leading-tight">
+          <div className="hidden leading-tight sm:block">
             <p className="font-pixel text-[9px] text-neon">{profile.name}</p>
             <p className="text-xs text-grape/80">{L(profile.title)}</p>
           </div>
@@ -107,8 +107,8 @@ export function Hud({ total, discovered, coins, bugs, effects, muted, onToggleMu
         </div>
 
         <div className="glass flex items-center gap-2 rounded-lg px-3 py-2">
-          <span className="font-pixel text-[8px] text-grape/80">{t('progress')}</span>
-          <div className="flex gap-1">
+          <span className="hidden font-pixel text-[8px] text-grape/80 md:inline">{t('progress')}</span>
+          <div className="hidden gap-1 sm:flex">
             {Array.from({ length: total }, (_, i) => (
               <span
                 key={i}

@@ -132,6 +132,19 @@ de um bloco. Visualmente é um `rotateY` sem perspectiva, que em pixel art lê c
 | Esmagar bug | pular e cair em cima | idem |
 | Fechar card | `Esc`, `Enter` ou `Espaço` | botão `X` / fora do card |
 
+### Celular e tablet
+
+Os controles na tela aparecem via `@media (pointer: coarse), (max-width: 767px)` — por
+dispositivo de entrada, não só por largura, senão um tablet de 800px ficaria sem controle
+nenhum. O hook `useCoarsePointer` em `src/game/useInput.ts` espelha esse mesmo critério
+para a tela inicial mostrar os botões em vez das teclas.
+
+A `.stage` usa `touch-action: manipulation`, **não** `none`. Com `none`, a rolagem por
+toque seria bloqueada em todos os elementos filhos — incluindo a tela inicial e os cards
+de experiência, que ficariam impossíveis de ler no celular. As telas sobrepostas ainda
+recebem a classe `.scroll-overlay` (`touch-action: pan-y`) para deixar a intenção
+explícita.
+
 ## Estrutura
 
 ```

@@ -41,6 +41,8 @@ export const strings = {
   bugs: { pt: 'Bugs', en: 'Bugs' },
   bugsSquashed: { pt: 'Bugs esmagados', en: 'Bugs squashed' },
   bugFixed: { pt: 'CORRIGIDO', en: 'FIXED' },
+  touchJump: { pt: 'Botão redondo', en: 'Round button' },
+  touchSpin: { pt: 'Toque pulo de novo no ar', en: 'Tap jump again mid-air' },
   aboutWhat: { pt: 'O que é isto', en: 'What this is' },
   aboutWhy: { pt: 'Por que eu fiz', en: 'Why I built it' },
   spin: { pt: 'Giro', en: 'Spin' },
