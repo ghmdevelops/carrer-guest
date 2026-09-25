@@ -19,7 +19,8 @@ function withRows(base: string[], overrides: Record<number, string>): string[] {
 
 /* ---------------------------------------------------------------- player
  * Engenheiro de QA: headphones (silhueta caracteristica), moletom com ziper
- * ciano e tenis ciano. 16 x 18 pixels.
+ * ciano e tenis ciano. Os bracos sao separados do tronco por uma coluna de
+ * contorno, senao o corpo vira um bloco roxo solido. 16 x 18 pixels.
  */
 
 const PLAYER_PALETTE: Palette = {
@@ -28,7 +29,6 @@ const PLAYER_PALETTE: Palette = {
   S: '#ffcfa4',
   C: '#22d3ee',
   P: '#6d28d9',
-  Q: '#4c1d95',
   J: '#1f2937',
 }
 
@@ -45,8 +45,8 @@ const IDLE = [
   '.....KSSSSK.....',
   '...KKPPPPPPKK...',
   '..KPPPPCCPPPPK..',
-  '.KSPPPQCCQPPPSK.',
-  '.KSPPPQCCQPPPSK.',
+  '.KSKPPPCCPPPKSK.',
+  '.KSKPPPCCPPPKSK.',
   '..KPPPPCCPPPPK..',
   '...KJJJJJJJJK...',
   '...KJJK..KJJK...',
@@ -54,8 +54,8 @@ const IDLE = [
 ]
 
 const RUN_A = withRows(IDLE, {
-  12: 'KSPPPPQCCQPPPPSK',
-  13: '.KPPPPQCCQPPPPK.',
+  12: 'KSKPPPPCCPPPPKSK',
+  13: '.KKPPPPCCPPPPKK.',
   16: '..KJJK...KJJK...',
   17: '.KCCK.....KCCK..',
 })
@@ -66,15 +66,15 @@ const RUN_B = withRows(IDLE, {
 
 const JUMP = withRows(IDLE, {
   11: '.SKPPPPCCPPPPKS.',
-  12: '.SKPPPQCCQPPPKS.',
-  13: '..KPPPQCCQPPPK..',
+  12: '.SKPPPPCCPPPPKS.',
+  13: '..KPPPPCCPPPPK..',
   16: '..KJJK....KJJK..',
   17: '..KCCK....KCCK..',
 })
 
 const FALL = withRows(IDLE, {
-  12: 'KSPPPPQCCQPPPPSK',
-  13: '.KPPPPQCCQPPPPK.',
+  12: 'KSKPPPPCCPPPPKSK',
+  13: '.KKPPPPCCPPPPKK.',
   16: '...KJJKKKKJJK...',
   17: '..KCCK....KCCK..',
 })
@@ -89,7 +89,10 @@ export const FRAMES: Record<FrameName, string> = {
   fall: toBoxShadow(FALL, SPRITE_SCALE, PLAYER_PALETTE),
 }
 
-/* ------------------------------------------------------------------- bug */
+/* ------------------------------------------------------------------- bug
+ * Besouro: casco vermelho com fenda central, dois olhos, antenas e patas.
+ * 12 x 10 pixels.
+ */
 
 const BUG_PALETTE: Palette = {
   K: '#140f2e',
@@ -104,17 +107,17 @@ const BUG_WALK_A = [
   '..KKKKKKKK..',
   '.KRRRRRRRRK.',
   'KRWKRRRRKWRK',
-  'KRRRDDDDRRRK',
-  'KRKRRKKRRKRK',
-  '.KRRRRRRRRK.',
+  'KRRRRDDRRRRK',
+  'KRRRRDDRRRRK',
+  '.KRRRDDDRRK.',
   '..KKKKKKKK..',
-  '.K..K..K..K.',
+  '.K.K....K.K.',
 ]
 
 const BUG_WALK_B = withRows(BUG_WALK_A, {
   0: '.K........K.',
   1: '..K......K..',
-  9: '..K.KK.KK.K.',
+  9: '..K.K..K.K..',
 })
 
 const BUG_SQUASHED = [
@@ -139,7 +142,8 @@ export const BUG_FRAMES: Record<BugFrameName, string> = {
 }
 
 /* ------------------------------------------------------------------ dino
- * Raptor: corpo teal, barriga clara, crista magenta no dorso e cauda erguida.
+ * Montaria: corpo teal, barriga clara e dois espinhos magenta triangulares
+ * no dorso (uma faixa reta leria como sela, nao como espinho).
  * 18 x 14 pixels. O dorso (linha 6) define DINO_RIDE_OFFSET.
  */
 
@@ -157,8 +161,8 @@ const DINO_IDLE = [
   '............KTTTTK',
   '............KWKTTK',
   '............KTTTTK',
-  '...........KKTTTKK',
-  '....MMMMMMMKTTTTK.',
+  '...M....M..KKTTTKK',
+  '..MMM..MMM.KTTTTK.',
   '..KKTTTTTTTTTTTK..',
   'KTTTTTTTTTTTTTTK..',
   'KTTTTTTBBBBBTTTK..',

@@ -1,5 +1,7 @@
 [build]
-  command = "npm run build"
+  # $URL e a URL final do site, injetada pela Netlify. Ela alimenta as meta
+  # tags de compartilhamento e o JSON-LD, que exigem endereco absoluto.
+  command = "VITE_SITE_URL=$URL npm run build"
   publish = "dist"
 
 [build.environment]

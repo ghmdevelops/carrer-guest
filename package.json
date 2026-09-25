@@ -11,7 +11,9 @@
     "build": "node scripts/check-sprites.mjs && tsc --noEmit && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
-    "check:sprites": "node scripts/check-sprites.mjs"
+    "check:sprites": "node scripts/check-sprites.mjs",
+    "og": "node scripts/build-og-image.mjs",
+    "preview:sprites": "node scripts/preview-sprites.mjs"
   },
   "dependencies": {
     "@fontsource-variable/space-grotesk": "5.3.0",
@@ -21,6 +23,7 @@
     "react-dom": "19.3.0"
   },
   "devDependencies": {
+    "@resvg/resvg-js": "2.6.2",
     "@tailwindcss/vite": "4.3.3",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",

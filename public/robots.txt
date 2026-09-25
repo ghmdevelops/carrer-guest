@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# Site de pagina unica: nao ha sitemap porque nao ha o que mapear.

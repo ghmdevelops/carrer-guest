@@ -33,11 +33,13 @@ bundle é pequeno e nada depende de CDN externa.
 
 ```bash
 npm install
-npm run dev            # http://localhost:5173
-npm run typecheck      # tsc --noEmit
-npm run check:sprites  # valida a largura das linhas dos pixel maps
-npm run build          # sprites + typecheck + build de produção em dist/
-npm run preview        # serve o dist/
+npm run dev              # http://localhost:5173
+npm run typecheck        # tsc --noEmit
+npm run check:sprites    # valida a largura das linhas dos pixel maps
+npm run preview:sprites  # renderiza os sprites ampliados em build/
+npm run og               # regera a imagem de compartilhamento
+npm run build            # sprites + typecheck + build de produção em dist/
+npm run preview          # serve o dist/
 ```
 
 ### Sprites
@@ -54,6 +56,37 @@ desenhos ASCII e as paletas.
 
 `npm run check:sprites` garante que todas as linhas de um sprite tenham a mesma largura —
 o TypeScript não pega esse erro, já que tudo é `string[]`.
+
+`npm run preview:sprites` gera `build/sprites-preview.png` com os desenhos ampliados e uma
+grade por cima. É a forma rápida de conferir um sprite sem abrir o jogo.
+
+## Compartilhamento e SEO
+
+`public/og-image.png` (1200x630) é o card que aparece no LinkedIn, WhatsApp e Twitter.
+Regere com `npm run og` depois de mexer nos sprites ou nos textos.
+
+O gerador (`scripts/build-og-image.mjs`) **lê os pixel maps reais de `sprite.ts`**, então a
+imagem nunca mostra um personagem diferente do que está no jogo. O título é desenhado com
+um pixel font embutido no próprio script, para não depender de fonte instalada.
+
+A imagem precisa ser PNG: redes sociais ignoram `og:image` em SVG. A conversão usa
+`@resvg/resvg-js`, que é devDependency e **não participa do `npm run build`** — o PNG fica
+versionado e a Netlify nunca precisa renderizar nada.
+
+### URL do site
+
+As meta tags e o JSON-LD exigem URL absoluta. O valor vem de `VITE_SITE_URL`, que o Vite
+substitui em `%VITE_SITE_URL%` dentro do `index.html`.
+
+- Local: definido no `.env`.
+- Netlify: o `netlify.toml` sobrescreve com `$URL`, a URL real do deploy.
+
+Se publicar fora da Netlify, ajuste o `.env`.
+
+### Sincronia do JSON-LD
+
+O bloco `application/ld+json` no `index.html` é estático e duplica dados que também vivem
+em `src/data/career.ts` (cargo, formação, tecnologias). Ao mudar um, confira o outro.
 
 ## Como personalizar
 
