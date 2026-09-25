@@ -1,0 +1,53 @@
+import type { Localized } from '../data/career'
+
+export const strings = {
+  pressStart: { pt: 'Aperte ENTER para começar', en: 'Press ENTER to start' },
+  start: { pt: 'Começar', en: 'Start' },
+  move: { pt: 'Andar', en: 'Move' },
+  jump: { pt: 'Pular', en: 'Jump' },
+  hitBlocks: { pt: 'Bata nos blocos por baixo', en: 'Hit the blocks from below' },
+  close: { pt: 'Fechar', en: 'Close' },
+  continue: { pt: 'Continuar', en: 'Continue' },
+  experience: { pt: 'Experiências', en: 'Experience' },
+  stack: { pt: 'Stack', en: 'Stack' },
+  whatIDid: { pt: 'O que eu fiz', en: 'What I did' },
+  whatIStudied: { pt: 'O que eu estudei', en: 'What I studied' },
+  progress: { pt: 'Progresso', en: 'Progress' },
+  coins: { pt: 'Moedas', en: 'Coins' },
+  sound: { pt: 'Som', en: 'Sound' },
+  goal: { pt: 'Objetivo', en: 'Goal' },
+  gameComplete: { pt: 'Fase concluída', en: 'Stage complete' },
+  thanksForPlaying: {
+    pt: 'Obrigado por jogar. Vamos conversar?',
+    en: 'Thanks for playing. Shall we talk?',
+  },
+  skills: { pt: 'Habilidades', en: 'Skills' },
+  contact: { pt: 'Contato', en: 'Contact' },
+  blocksToFind: { pt: 'blocos para descobrir', en: 'blocks to uncover' },
+  blocks: { pt: 'Blocos', en: 'Blocks' },
+  playAgain: { pt: 'Jogar de novo', en: 'Play again' },
+  missedBlocks: {
+    pt: 'Você chegou ao fim, mas deixou blocos para trás.',
+    en: 'You reached the end, but left some blocks behind.',
+  },
+  allFound: {
+    pt: 'Você encontrou tudo. Perfeito.',
+    en: 'You found everything. Flawless.',
+  },
+  scrollHint: { pt: 'Continue andando para a direita', en: 'Keep walking right' },
+  stompHint: { pt: 'Pule em cima dos bugs para esmagar', en: 'Jump on the bugs to squash them' },
+  newExperience: { pt: 'Nova experiência', en: 'New experience' },
+  newBonus: { pt: 'Formação', en: 'Education' },
+  bugs: { pt: 'Bugs', en: 'Bugs' },
+  bugsSquashed: { pt: 'Bugs esmagados', en: 'Bugs squashed' },
+  bugFixed: { pt: 'CORRIGIDO', en: 'FIXED' },
+  aboutWhat: { pt: 'O que é isto', en: 'What this is' },
+  aboutWhy: { pt: 'Por que eu fiz', en: 'Why I built it' },
+  spin: { pt: 'Giro', en: 'Spin' },
+  spinHint: { pt: 'Pule de novo no ar', en: 'Jump again mid-air' },
+  boostSpeed: { pt: 'RÁPIDO', en: 'SPEED' },
+  boostShield: { pt: 'ESCUDO', en: 'SHIELD' },
+  boostDino: { pt: 'DINO', en: 'DINO' },
+} satisfies Record<string, Localized>
+
+export type StringKey = keyof typeof strings

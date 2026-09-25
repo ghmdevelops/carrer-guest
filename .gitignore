@@ -1,0 +1,12 @@
+node_modules
+dist
+dist-ssr
+*.local
+.DS_Store
+.vite
+*.log
+
+# O .npmrc aponta para o Artifactory corporativo, inalcancavel fora da rede
+# interna. Se ele for versionado, o build da Netlify quebra. O conteudo para
+# recria-lo esta no AGENTS.md.
+.npmrc

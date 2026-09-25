@@ -1,0 +1,35 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  # Vite 8 exige ^20.19.0 || >=22.12.0
+  NODE_VERSION = "22"
+  NPM_FLAGS = "--no-audit --no-fund"
+
+# Assets tem hash no nome, entao podem ser cacheados para sempre.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+
+# Sem redirect catch-all de SPA de proposito: a aplicacao nao tem rotas, e o
+# vite.config usa `base: './'` (caminhos relativos). Servir o index.html em
+# "/qualquer/coisa" faria os assets serem buscados em "/qualquer/assets/...".
+# Se um dia entrar roteamento no cliente, troque `base` para '/' e adicione:
+#   [[redirects]]
+#     from = "/*"
+#     to = "/index.html"
+#     status = 200
